@@ -25,9 +25,6 @@
 </head>
 
 <body>
-    @if($product =! null)
-        <p>Du lieu</p>
-    @endif
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -51,10 +48,8 @@
                     <a href="#" class="login-panel"><i class="fa fa-user"></i>Login</a>
                     <div class="lan-selector">
                         <select class="language_drop" name="countries" id="countries" style="width:300px;">
-                            <option value='yt' data-image="assets/img/flag-1.jpg" data-imagecss="flag yt"
-                                data-title="English">English</option>
-                            <option value='yu' data-image="assets/img/flag-2.jpg" data-imagecss="flag yu"
-                                data-title="Bangladesh">German </option>
+                            <option value='yt' data-image="assets/img/flag-1.jpg" data-imagecss="flag yt" data-title="English">English</option>
+                            <option value='yu' data-image="assets/img/flag-2.jpg" data-imagecss="flag yu" data-title="Bangladesh">German </option>
                         </select>
                     </div>
                     <div class="top-social">
@@ -97,40 +92,43 @@
                                     <span>3</span>
                                 </a>
                                 <div class="cart-hover">
-                                    <div class="select-items">
-                                        <table>
-                                            <tbody>
-                                                <tr>
-                                                    <td class="si-pic"><img src="assets/img/select-product-1.jpg" alt=""></td>
-                                                    <td class="si-text">
-                                                        <div class="product-selected">
-                                                            <p>₫60.00 x 1</p>
-                                                            <h6>Kabino Bedside Table</h6>
-                                                        </div>
-                                                    </td>
-                                                    <td class="si-close">
-                                                        <i class="ti-close"></i>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td class="si-pic"><img src="assets/img/select-product-2.jpg" alt=""></td>
-                                                    <td class="si-text">
-                                                        <div class="product-selected">
-                                                            <p>₫60.00 x 1</p>
-                                                            <h6>Kabino Bedside Table</h6>
-                                                        </div>
-                                                    </td>
-                                                    <td class="si-close">
-                                                        <i class="ti-close"></i>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
+                                    <div id="change-item-cart">
+                                        <div class="select-items">
+                                            <!-- <table>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="si-pic"><img src="assets/img/select-product-1.jpg" alt=""></td>
+                                                        <td class="si-text">
+                                                            <div class="product-selected">
+                                                                <p>₫60.00 x 1</p>
+                                                                <h6>Kabino Bedside Table</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td class="si-close">
+                                                            <i class="ti-close"></i>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="si-pic"><img src="assets/img/select-product-2.jpg" alt=""></td>
+                                                        <td class="si-text">
+                                                            <div class="product-selected">
+                                                                <p>₫60.00 x 1</p>
+                                                                <h6>Kabino Bedside Table</h6>
+                                                            </div>
+                                                        </td>
+                                                        <td class="si-close">
+                                                            <i class="ti-close"></i>
+                                                        </td>
+                                                    </tr>
+                                                </tbody> -->
+                                            </table>
+                                        </div>
+                                        <div class="select-total">
+                                            <span>total:</span>
+                                            <h5>₫0</h5>
+                                        </div>
                                     </div>
-                                    <div class="select-total">
-                                        <span>total:</span>
-                                        <h5>₫120.00</h5>
-                                    </div>
+
                                     <div class="select-button">
                                         <a href="#" class="primary-btn view-card">VIEW CARD</a>
                                         <a href="#" class="primary-btn checkout-btn">CHECK OUT</a>
@@ -209,7 +207,7 @@
                                         </div>
                                         <ul>
                                             <li class="w-icon active"><a href="#"><i class="icon_bag_alt"></i></a></li>
-                                            <li class="quick-view"><a href="{{url('/add-cart/'.$item->id)}}">+ Add Cart</a></li>
+                                            <li class="quick-view"><a onclick="addCart({{$item->id}})" href="javascript:">+ Add Cart</a></li>
                                             <li class="w-icon"><a href="#"><i class="fa fa-random"></i></a></li>
                                         </ul>
                                     </div>
@@ -225,12 +223,12 @@
                                 </div>
                             </div>
                             @endforeach
-                            
+
                         </div>
-                    </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </section>
     <!-- Product Shop Section End -->
@@ -331,8 +329,10 @@
                     <div class="col-lg-12">
                         <div class="copyright-text">
                             <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.facebook.com/thuy.huynhvan" target="_blank">Huynh Van Thuy</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            Copyright &copy;<script>
+                                document.write(new Date().getFullYear());
+                            </script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://www.facebook.com/thuy.huynhvan" target="_blank">Huynh Van Thuy</a>
+                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                         </div>
                         <div class="payment-pic">
                             <img src="assets/img/payment-method.png" alt="">
@@ -355,6 +355,32 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="assets/js/jquery.slicknav.js"></script>
     <script src="assets/js/owl.carousel.min.js"></script>
     <script src="assets/js/main.js"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css" />
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css" />
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css" />
+
+    <!-- function add cart -->
+    <script>
+        function addCart(id) {
+            $.ajax({
+                url: '/add-cart/' + id,
+                type: 'GET',
+            }).done(function(response) {
+                console.log(response);
+                $("#change-item-cart").empty();
+                $("#change-item-cart").html(response);
+                alertify.success('Thêm thành công');
+            });
+        }
+    </script>
 </body>
 
 </html>

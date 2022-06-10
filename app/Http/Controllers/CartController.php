@@ -15,7 +15,7 @@ class CartController extends Controller
         return view('index', compact('products'));
     }
 
-    public function addCart($id)
+    public function addCart(Request $request,$id)
     {
         $product = DB::table('products')->where('id', $id)->first();
         if($product != null)
@@ -23,8 +23,10 @@ class CartController extends Controller
             $oldCart = Session('Cart') ? Session('Cart') : null;
             $newCart = new Cart($oldCart);
             $newCart->addCart($product, $id);
-            dd($newCart);
+
+            $request->session()->put('Cart', $newCart);
         }
+        return view('cart', compact('newCart'));
        
     }
 }
