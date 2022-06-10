@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use PHPUnit\Framework\Constraint\Count;
 use Session;
 
 class CartController extends Controller
@@ -27,6 +28,24 @@ class CartController extends Controller
             $request->session()->put('Cart', $newCart);
         }
         return view('cart', compact('newCart'));
+       
+    }
+
+    public function deleteItemCart(Request $request,$id)
+    {
+
+        $oldCart = Session('Cart') ? Session('Cart') : null;
+        $newCart = new Cart($oldCart);
+        $newCart->deleteItemCart($id);
+
+        if(Count($newCart->products) > 0){
+            $request->session()->put('Cart', $newCart);
+        }else{
+            $request->session()->forget('Cart');
+        }
+        return view('cart', compact('newCart'));
+            
+       
        
     }
 }

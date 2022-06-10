@@ -8,11 +8,11 @@
                     <td class="si-text">
                         <div class="product-selected">
                             <p>{{number_format($item['productInfo']->price)}} đ x {{$item['quanty']}}</p>
-                            <h6>Kabino Bedside Table</h6>
+                            <h6>{{$item['productInfo']->name}}</h6>
                         </div>
                     </td>
                     <td class="si-close">
-                        <i class="ti-close"></i>
+                        <i class="ti-close" data-id="{{$item['productInfo']->id}}"></i>
                     </td>
                 </tr>
                 @endforeach

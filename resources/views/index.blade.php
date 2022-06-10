@@ -22,6 +22,13 @@
     <link rel="stylesheet" href="assets/css/jquery-ui.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/slicknav.min.css" type="text/css">
     <link rel="stylesheet" href="assets/css/style.css" type="text/css">
+
+    <style>
+        #change-item-cart table tbody tr td{
+            width: 70px;
+
+        }
+    </style>
 </head>
 
 <body>
@@ -374,12 +381,22 @@
                 url: '/add-cart/' + id,
                 type: 'GET',
             }).done(function(response) {
-                console.log(response);
                 $("#change-item-cart").empty();
                 $("#change-item-cart").html(response);
                 alertify.success('Thêm thành công');
             });
         }
+
+        $("#change-item-cart").on("click", ".si-close i", function(){
+            $.ajax({
+                url: '/delete-item-cart/' + $(this).data("id"),
+                type: 'GET',
+            }).done(function(response) {
+                $("#change-item-cart").empty();
+                $("#change-item-cart").html(response);
+                alertify.success('Xoá thành công');
+            });
+        });
     </script>
 </body>
 

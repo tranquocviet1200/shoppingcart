@@ -21,3 +21,4 @@ Route::get('/card', function () {
 });
 
 Route::get('/add-cart/{id}', [CartController::class, 'addCart']);
+Route::get('/delete-item-cart/{id}', [CartController::class, 'deleteItemCart']);
